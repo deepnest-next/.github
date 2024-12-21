@@ -22,6 +22,10 @@ Unfortunately, we also have some products that we will not release as open sourc
 - *core* - A new development of the current core source code, which we are developing to make it easier for future contributors to add new features.
 
 
+## Be a Patreon
+
+You can support us via [Patreon](https://patreon.com/deepnest_next?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink).
+
 ## ⚠️ Notice
 
 We are not responsible for the domain deepnest.io. The original developer has not pursued the development of deepnest for some time.
