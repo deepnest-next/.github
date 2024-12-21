@@ -5,6 +5,8 @@ The original deepnest author has stopped maintaining deepnest and is not respond
 We are now trying to bring the somewhat dusty project up to date and adapt it to the times.
 If you are interested in supporting us, throw a PR over the fence and/or get involved in issues or discussions.
 
+⚠️⚠️ DONT TRUST [@deepnest-io/Deepnest](https://github.com/deepnest-io/Deepnest) ANYMORE! Why? [Read this!](why-we-forked-into-a-new-organisation.md) ⚠️⚠️
+
 ## Projects we are working on
 
 ### Our currently published projects
@@ -20,7 +22,6 @@ Unfortunately, we also have some products that we will not release as open sourc
 
 - *node-dxf2svg-processor* - Our node and electron module, to convert dxf2svg and svg2dxf. A future core module.
 - *core* - A new development of the current core source code, which we are developing to make it easier for future contributors to add new features.
-
 
 ## Be a Patreon
 
