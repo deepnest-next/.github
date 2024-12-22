@@ -6,7 +6,7 @@ Thank you for considering contributing to our project! We greatly appreciate you
 
 There are many ways to get involved:
 
-- **Report bugs**: If you find a bug, please report it through our [issue tracker](../../issue).
+- **Report bugs**: If you find a bug, please report it through our _**issue tracker**_ within the right repository.
 - **Propose features**: Have an idea for a new feature? We’d love to hear your suggestions!
 - **Contribute code**: If you want to write code, please check the open issues first or create a new issue before starting your work.
 - **Improve documentation**: Well-documented code and clear guides are essential. Help us improve the documentation!
@@ -45,7 +45,7 @@ To maintain a consistent code style, please follow these guidelines:
 
 We’re here to help and answer questions. You can reach us through the following channels:
 
-- [Discussions](../../discussions)
+- [Discussions](https://github.com/deepnest-next/deepnest/discussions)
 - [Email](stuff@deepnest.net)
 
 We look forward to collaborating with you on this project!
