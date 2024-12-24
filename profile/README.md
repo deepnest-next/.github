@@ -27,6 +27,10 @@ Unfortunately, we also have some products that we will not release as open sourc
 
 You can support us via [Patreon](https://patreon.com/deepnest_next?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink).
 
+## Community
+
+Join us on [Discord](https://discord.gg/z8CjG94PYk)!
+
 ## ⚠️ Notice
 
 We are not responsible for the domain deepnest.io. The original developer has not pursued the development of deepnest for some time.
