@@ -32,5 +32,7 @@ Perhaps it's better if I don't write any more, as I'm very disappointed at how f
 
 I wish you all to find your way here and open a new chapter together with us. To develop this great work of various contributors even further and make it bigger.
 
+EDIT:2024-01-07 - github.com/deepnest-io is no longer available because of the deletion of the org from @abebeos aka @lazaridiscom. To Bad that Github is not really helpful here to bring things back...
+
 Best regards
 Josef Fröhle (Dexus)
