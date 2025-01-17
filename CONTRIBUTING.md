@@ -46,7 +46,7 @@ To maintain a consistent code style, please follow these guidelines:
 We’re here to help and answer questions. You can reach us through the following channels:
 
 - [Discussions](https://github.com/deepnest-next/deepnest/discussions)
-- [Email](stuff@deepnest.net)
+- [Email](mailto:stuff@deepnest.net)
 
 We look forward to collaborating with you on this project!
 
