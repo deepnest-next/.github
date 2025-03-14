@@ -15,6 +15,8 @@ and
   "id": 62181287,
   "created_at": "2020-03-14T15:33:46Z",
   "updated_at": "2024-07-19T11:50:07Z"
+
+his website: lazaridis.com 
 ```
 
 takes over an organisation maliciously and with blackmail and "expropriates" the previous owners he had worked for. I see it somewhat differently.
