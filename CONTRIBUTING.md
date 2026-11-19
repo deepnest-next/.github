@@ -41,6 +41,18 @@ To maintain a consistent code style, please follow these guidelines:
 2. Describe in the pull request what changes you made and why.
 3. Wait for feedback from a reviewer. We strive to review all pull requests as quickly as possible.
 
+## Contributor License Agreement (CLA)
+
+deepnest-next projects are dual-licensed: `AGPL-3.0-or-later` **or** a commercial licence.
+Before we can run CI on or merge your pull request, every committer must sign the
+[deepnest Contributor License Agreement v2.0](CLA.md) ([Deutsch](CLA-de.md)).
+
+- The CLA bot comments on your first pull request. To sign, reply with exactly:
+  `I have read the deepnest Contributor License Agreement v2.0 and I hereby sign the CLA.`
+- One signature covers all deepnest-next repositories, including past and future contributions.
+- CI starts automatically after everyone has signed. Until then the `cla-gate` check is red.
+- Contributing on behalf of your employer? Use the entity signature in the CLA, or contact us.
+
 ## Contact and Community
 
 We’re here to help and answer questions. You can reach us through the following channels:
