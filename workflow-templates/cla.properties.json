@@ -1,0 +1,6 @@
+{
+  "name": "deepnest CLA v2.0",
+  "description": "Requires every committer to sign the deepnest CLA v2.0. Signatures are stored in deepnest-next/cla-signatures.",
+  "iconName": "octicon law",
+  "categories": ["Automation"]
+}

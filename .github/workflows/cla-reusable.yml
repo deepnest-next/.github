@@ -1,0 +1,92 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later OR LicenseRef-Deepnest-Commercial
+#
+# Org-wide CLA check. Every repo calls this from its own .github/workflows/cla.yml
+# (see workflow-templates/cla.yml). Signatures are stored centrally in the private
+# repo deepnest-next/cla-signatures, written by the deepnest-cla-bot GitHub App.
+#
+# Result:
+#   - job fails while any committer of the PR has not signed CLA v2.0
+#   - label `cla-signed` is added when all committers signed, removed otherwise;
+#     ci.yml's `cla-gate` job keys on that label. The label is set with the App
+#     token so the `labeled` event triggers CI (GITHUB_TOKEN events don't).
+#
+# Security: runs on pull_request_target with secrets. NEVER check out or run PR code here.
+
+name: CLA (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      client-id:
+        description: Client ID of the deepnest-cla-bot GitHub App (vars.CLA_APP_CLIENT_ID)
+        type: string
+        required: true
+      allowlist:
+        description: Comma-separated logins that need no signature
+        type: string
+        default: "Dexus,dependabot[bot],renovate[bot],github-actions[bot],deepnest-cla-bot[bot]"
+    secrets:
+      CLA_APP_PRIVATE_KEY:
+        required: true
+
+jobs:
+  cla:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write # sign / all-signed comments
+      statuses: write # flip the PR check
+      actions: write # re-run the failed pull_request_target run after signing
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+      CLA_URL: https://github.com/deepnest-next/.github/blob/main/CLA.md
+      CLA_DE_URL: https://github.com/deepnest-next/.github/blob/main/CLA-de.md
+    steps:
+      - name: App token (cla-signatures + this repo)
+        id: app
+        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        with:
+          client-id: ${{ inputs.client-id }}
+          private-key: ${{ secrets.CLA_APP_PRIVATE_KEY }}
+          owner: deepnest-next
+          repositories: cla-signatures,${{ github.event.repository.name }}
+
+      - name: CLA Assistant Lite
+        # Pinned to a commit SHA: this runs with write permissions on pull_request_target.
+        uses: contributor-assistant/github-action@ca4a40a7d1004f18d9960b404b97e5f30a505a08 # v2.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ steps.app.outputs.token }}
+        with:
+          remote-organization-name: deepnest-next
+          remote-repository-name: cla-signatures
+          branch: main
+          path-to-signatures: signatures/cla-v2.json
+          path-to-document: ${{ env.CLA_URL }}
+          allowlist: ${{ inputs.allowlist }}
+          custom-pr-sign-comment: "I have read the deepnest Contributor License Agreement v2.0 and I hereby sign the CLA."
+          custom-notsigned-prcomment: |
+            Thank you for your contribution! Before we can run CI and merge it, every
+            committer of this pull request has to sign our
+            [Contributor License Agreement v2.0](${{ env.CLA_URL }}) ([Deutsch](${{ env.CLA_DE_URL }})).
+
+            **Why:** deepnest-next projects are dual-licensed (AGPL-3.0-or-later and a
+            commercial licence). The CLA grants Josef Fröhle and DeineAgentur UG
+            (haftungsbeschränkt) the rights to distribute and relicense your contribution.
+            You keep your copyright. CI starts automatically once everyone has signed.
+          custom-allsigned-prcomment: "All committers have signed the CLA v2.0. Thank you! CI will start now."
+          create-file-commit-message: "Create CLA v2.0 signature store"
+          lock-pullrequest-aftermerge: false
+
+      - name: Label cla-signed
+        if: success()
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label cla-signed
+
+      - name: Remove label cla-signed
+        if: failure() && steps.app.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        # The label may not be there; that's fine.
+        run: gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label cla-signed || true
