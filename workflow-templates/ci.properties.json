@@ -1,0 +1,6 @@
+{
+  "name": "deepnest CI (CLA-gated)",
+  "description": "CI that only runs after all committers signed the CLA, with one required check: ci-required.",
+  "iconName": "octicon checklist",
+  "categories": ["Continuous integration"]
+}
